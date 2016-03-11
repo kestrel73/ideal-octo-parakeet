@@ -75,3 +75,7 @@ local.properties
 
 # Code Recommenders
 .recommenders/
+
+
+# Spring boot 
+.mvn/
