@@ -1,6 +1,10 @@
 package net.wuollet.jpa.domain.model.device;
 
+import java.util.regex.*;
+
 import javax.persistence.*;
+
+import org.apache.commons.lang3.*;
 
 @Embeddable
 public class SerialNumber {
@@ -8,7 +12,12 @@ public class SerialNumber {
 	@Column(name="SERIAL_NUMBER")
 	private String number;
 
-	public SerialNumber(String number) {
+	private static final Pattern VALID_PATTERN = Pattern.compile("^[0-9]{10}$|^[Ee][A-Za-z-0-9][0-9]{8}$");
+
+	public SerialNumber(final String number) {
+		Validate.notNull(number, "Number may not be null");
+		Validate.isTrue(VALID_PATTERN.matcher(number).matches(), "%s is not a valid Serial Number (wrong pattern)", number);
+
 		this.number = number;
 	}
 
