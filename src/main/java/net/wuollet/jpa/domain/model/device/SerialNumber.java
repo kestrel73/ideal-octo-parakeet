@@ -7,7 +7,7 @@ import javax.persistence.*;
 import org.apache.commons.lang3.*;
 
 @Embeddable
-public class SerialNumber {
+public final class SerialNumber {
 
 	@Column(name="SERIAL_NUMBER")
 	private String number;
@@ -47,6 +47,11 @@ public class SerialNumber {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return this.number;
+	};
 
 
 

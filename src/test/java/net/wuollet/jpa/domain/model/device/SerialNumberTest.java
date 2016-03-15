@@ -1,12 +1,17 @@
 package net.wuollet.jpa.domain.model.device;
 
+import static org.junit.Assert.*;
+
 import org.junit.*;
 
 public class SerialNumberTest {
 
 	@Test
 	public void testHashCode() {
-		//fail("Not yet implemented");
+		SerialNumber s1 = new SerialNumber("0123456789");
+		SerialNumber s2 = new SerialNumber("0123456789");
+
+		assertEquals(s1.hashCode(), s2.hashCode());
 	}
 
 	@Test
@@ -31,7 +36,12 @@ public class SerialNumberTest {
 
 	@Test
 	public void testEqualsObject() {
-		//fail("Not yet implemented");
+		SerialNumber s1 = new SerialNumber("0123456789");
+		SerialNumber s2 = new SerialNumber("0123456789");
+		SerialNumber s3 = new SerialNumber("1123456789");
+
+		assertTrue(s1.equals(s2));
+		assertFalse(s1.equals(s3));
 	}
 
 }
