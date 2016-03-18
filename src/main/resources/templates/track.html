@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title th:text="${message}">DEVICE</title>
+</head>
+<body>
+
+	<form name="trackingForm" th:action="@{/track}" action="/track" method="POST">
+		<input type="text" name="trackingId" placeholder="Tracking Id"/>
+		<input type="submit"/>
+	</form>
+
+
+	<div th:if="${device} != null">
+	
+		<table>
+			<tr>
+				<td>Tracking Id:</td><td th:text="${device.trackingId}">8212AB2F</td>
+			</tr>
+			<tr>
+				<td>Serial Number:</td><td th:text="${device.serialNumber}">1234567890</td>
+			</tr>
+			
+		</table>
+	
+		<table th:if="${!#lists.isEmpty(device.events)}">
+			<tr>
+				<th>Operation</th>
+				<th>Location</th>
+				<th>Event Time</th>
+				<th>Created By</th>
+			</tr>
+			<tr th:each="event : ${device.events}">
+				<td th:text="${event.operation}">operation</td>
+				<td th:text="${event.location}">location</td>
+				<td th:text="${event.timeOf}">12-01-2016 12.00.00 AM CST</td>
+				<td th:text="${event.createdBy}">doej</td>
+			</tr>
+		</table>
+	
+	</div>
+
+</body>
+</html>

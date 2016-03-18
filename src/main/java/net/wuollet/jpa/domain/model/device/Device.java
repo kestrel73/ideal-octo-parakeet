@@ -1,8 +1,11 @@
 package net.wuollet.jpa.domain.model.device;
 
-import javax.persistence.*;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
 
-import org.springframework.data.jpa.domain.*;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @AttributeOverride(name = "id", column=@Column(name="DEVICE_ID"))
@@ -14,10 +17,14 @@ public class Device extends AbstractPersistable<Long>{
 	private SerialNumber serialNumber;
 
 	@Embedded
-	private final TrackingId trackingId;
+	private TrackingId trackingId;
 
 	public Device(final TrackingId trackingId) {
 		this.trackingId = trackingId;
+	}
+
+	protected Device() {
+		// required for persistence
 	}
 
 	public SerialNumber getSerialNumber() {

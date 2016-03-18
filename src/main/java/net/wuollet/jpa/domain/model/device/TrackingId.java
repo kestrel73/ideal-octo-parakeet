@@ -1,6 +1,7 @@
 package net.wuollet.jpa.domain.model.device;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Embeddable;
 
 @Embeddable
 public final class TrackingId {
@@ -39,6 +40,11 @@ public final class TrackingId {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return id;
 	}
 
 
