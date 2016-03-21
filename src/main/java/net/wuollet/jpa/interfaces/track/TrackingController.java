@@ -49,6 +49,8 @@ public class TrackingController {
 			final Locale locale = RequestContextUtils.getLocale(request);
 			final List<WorkEvent> workEvents = workEventRepository.findByDeviceOrderByTimeOfDesc(device);
 			model.addAttribute("device", new DeviceTrackingViewAdapter(device, messageSource, locale, workEvents));
+		} else {
+			bindingResult.rejectValue("trackingId", "device.unknown_id", new Object[] {command.getTrackingId()}, "Unknown tracking id");
 		}
 
 		return "track";
