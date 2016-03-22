@@ -38,7 +38,7 @@ public class TrackingController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String post(final HttpServletRequest request, final TrackingCommand command, Model model, BindingResult bindingResult) {
+	public String post(final HttpServletRequest request, final TrackingCommand command, BindingResult bindingResult, Model model) {
 
 		// validate TrackingCommand
 
