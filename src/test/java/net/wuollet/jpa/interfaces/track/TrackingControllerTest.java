@@ -27,17 +27,6 @@ import net.wuollet.jpa.JpaTestsApplication;
 @ContextConfiguration(classes = JpaTestsApplication.class)
 public class TrackingControllerTest {
 
-//	public static class TestConfiguration {
-//
-//		@Bean
-//		public DeviceRepository deviceRepository() {
-//			DeviceRepository deviceRepository = mock(DeviceRepository.class);
-//			Device device = new Device(new TrackingId("1X2Y99Z"));
-//			when(deviceRepository.findByTrackingId(device.getTrackingId())).thenReturn(device);
-//			return deviceRepository;
-//		}
-//	}
-
 	@Autowired
 	private WebApplicationContext wac;
 
@@ -45,7 +34,6 @@ public class TrackingControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		//this.mockMvc = MockMvcBuilders.standaloneSetup(new TrackingController()).build();
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
 	}
 
